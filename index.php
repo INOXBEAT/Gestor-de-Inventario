@@ -1,4 +1,7 @@
-<?php include 'conexion.php'; ?>
+<?php 
+include 'conexion.php'; 
+include 'header.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -10,17 +13,6 @@
 </head>
 
 <body>
-
-<nav class="navbar">
-        <div class="container">
-            <h1 class="logo">Mi Aplicación</h1>
-            <ul class="navbar-lista">
-                <li><a href="index.php">Agregar Producto</a></li>
-                <li><a href="productos.php">Listado de Productos</a></li>
-                <!-- Puedes agregar más opciones de navegación aquí -->
-            </ul>
-        </div>
-    </nav>
 
     <div class="container">
         <h1>Agregar Producto</h1>
@@ -37,6 +29,8 @@
             <button type="submit">Agregar Producto</button>
         </form>
     </div>
+
+<?php include 'footer.php';?>
 </body>
 
 </html>
