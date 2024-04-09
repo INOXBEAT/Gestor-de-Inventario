@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.logo {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    color: #fff;
+    float: left;
+}
+
+h1 {
+    color: #036677;
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    background-color: #036677;
+    color: #fff;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #036677;
+    color: #fff;
+}
+
+td a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #fff;
+}
+
+td a.editar {
+    background-color: #036677;
+}
+
+td a.eliminar {
+    background-color: #ad2e24;
+}
+
+.navbar {
+    background-color: #036677;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.navbar-lista {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    float: right;
+}
+
+.navbar-lista li {
+    display: inline;
+}
+
+.navbar-lista li a {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-lista li a:hover {
+    background-color: #03474e;
+}
