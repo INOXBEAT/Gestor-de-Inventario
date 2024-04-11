@@ -133,3 +133,14 @@ td a.eliminar {
 .acciones a:hover {
     background-color: #03474e;
 }
+
+.footer {
+    background-color: #036677;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+}
