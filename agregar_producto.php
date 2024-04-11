@@ -1,8 +1,7 @@
 <?php
 // Incluye el archivo de conexión a la base de datos
 include 'conexion.php';
-// Inicializa la variable de mensaje
-$mensaje = "";
+
 // Verifica si se han enviado datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtiene los datos del formulario
@@ -22,6 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 // Redirecciona de nuevo al index.php después de agregar el producto
-header("Location: index.php?mensaje=" . $mensaje);
+header("Location: productos.php?mensaje=" . $mensaje);
 exit();
 ?>
