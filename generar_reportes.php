@@ -1,11 +1,33 @@
-<?php
+<?php 
 require_once __DIR__ . '/vendor/autoload.php';
-require 'vendor/autoload.php';
+include 'conexion.php';
+
 
 use FPDF as GlobalFPDF;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Fpdf\Fpdf;
+
+function obtenerProductosDesdeBaseDeDatos() {
+    // Aquí debes incluir la lógica para conectarte a la base de datos y obtener los datos de los productos
+    // Por ejemplo, puedes usar PDO para conectarte a la base de datos y ejecutar una consulta SQL
+    // Asumiré que tienes una tabla llamada 'productos' con campos 'id', 'nombre', 'descripcion', 'cantidad' y 'precio'
+
+    // Ejemplo con PDO
+    $dsn = 'mysql:host=localhost;dbname=inventario';
+    $usuario = 'root';
+    $contrasena = '';
+
+    try {
+        $conexion = new PDO($dsn, $usuario, $contrasena);
+        $consulta = $conexion->query("SELECT * FROM productos");
+        $productos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        return $productos;
+    } catch (PDOException $e) {
+        echo 'Error al conectarse a la base de datos: ' . $e->getMessage();
+        return false;
+    }
+}
 
 function generarExcel($productos) {
     $spreadsheet = new Spreadsheet();
@@ -30,11 +52,12 @@ function generarExcel($productos) {
 }
 
 function generarPDF($productos) {
-    $pdf = new GlobalFPDF();
+    $pdf = new GlobalFPDF('L', 'mm', 'Letter');
     $pdf->AddPage();
-    $pdf->SetFont('Arial', 'B', 12);
+    $pdf->SetMargins(10,10,10);
 
     // Configurar el encabezado del PDF
+    $pdf->SetFont('Arial', 'B', 12);
     $pdf->Cell(40, 10, 'ID', 1);
     $pdf->Cell(40, 10, 'Nombre', 1);
     $pdf->Cell(60, 10, 'Descripción', 1);
@@ -61,20 +84,24 @@ function generarPDF($productos) {
     $pdf->Output();
 }
 
-// Obtener los productos (esto debería estar en otro archivo)
-$productos = [
-    ['id' => 1, 'nombre' => 'Producto 1', 'descripcion' => 'Descripción del producto 1', 'cantidad' => 10, 'precio' => 100],
-    ['id' => 2, 'nombre' => 'Producto 2', 'descripcion' => 'Descripción del producto 2', 'cantidad' => 20, 'precio' => 200],
-    ['id' => 3, 'nombre' => 'Producto 3', 'descripcion' => 'Descripción del producto 3', 'cantidad' => 30, 'precio' => 300],
-    // Agrega más productos según sea necesario
-];
 
-// Procesar la solicitud de generación de reporte
-if (isset($_GET['formato']) && $_GET['formato'] === 'excel') {
-    generarExcel($productos);
-} elseif (isset($_GET['formato']) && $_GET['formato'] === 'pdf') {
-    generarPDF($productos);
+// Obtener los productos desde la base de datos
+$productos = obtenerProductosDesdeBaseDeDatos();
+
+// Verificar si se obtuvieron los productos correctamente
+if ($productos !== false) {
+    // Procesar la solicitud de generación de reporte
+    if (isset($_GET['formato']) && $_GET['formato'] === 'excel') {
+        generarExcel($productos);
+    } elseif (isset($_GET['formato']) && $_GET['formato'] === 'pdf') {
+        generarPDF($productos);
+    } else {
+        echo "Formato de reporte no válido";
+    }
 } else {
-    echo "Formato de reporte no válido";
+    // Manejar el caso en que no se pudieron obtener los productos
+    echo "Error al obtener los productos desde la base de datos";
+
+    echo "Error al obtener los productos desde la base de datos";
 }
 ?>

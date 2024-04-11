@@ -51,7 +51,14 @@ if (mysqli_num_rows($resultado) > 0) {
 
 <body>
     <div class="container">
-            <h1>Listado de Productos</h1>
+        <h1>Listado de Productos</h1>
+
+        <!-- Botones de generación de archivos PDF y Excel -->
+        <div class="acciones">
+            <a href="generar_reportes.php?formato=pdf"><img src="pdf_icon.png" alt="PDF" style="width: 32px; height: 32px;"></a>
+            <a href="generar_reportes.php?formato=excel"><img src="excel_icon.png" alt="Excel" style="width: 32px; height: 32px;"></a>
+        </div>
+
         <table>
             <thead>
                 <tr>
