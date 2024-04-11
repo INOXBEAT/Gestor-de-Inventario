@@ -16,8 +16,25 @@ include 'header.php';
 
   <script>
     $(document).ready(function() {
-      $("#agregar_producto").click(function() {
-        alert("Producto agregado correctamente");
+      $("#agregar_producto").click(function(e) {
+        e.preventDefault(); // Evitar que el formulario se envíe automáticamente
+
+        // Obtener valores de los campos
+        var nombre = $("#nombre").val();
+        var descripcion = $("#descripcion").val();
+        var cantidad = $("#cantidad").val();
+        var precio = $("#precio").val();
+
+        // Verificar si todos los campos están llenos
+        if (nombre !== '' && cantidad !== '' && precio !== '') {
+          // Enviar el formulario
+          $("form").submit();
+          // Mostrar mensaje de éxito
+          alert("Producto agregado correctamente");
+        } else {
+          // Mostrar mensaje de error si falta algún campo
+          alert("Por favor, complete todos los campos antes de agregar el producto.");
+        }
       });
     });
   </script>
