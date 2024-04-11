@@ -39,15 +39,19 @@ if (mysqli_num_rows($resultado) > 0) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Productos</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="buscar_productos.js"></script>
 </head>
+
 <body>
-<div class="container">
-        <h1>Lista de Productos</h1>
+    <div class="container">
+            <h1>Listado de Productos</h1>
         <table>
             <thead>
                 <tr>
@@ -83,15 +87,16 @@ if (mysqli_num_rows($resultado) > 0) {
             </tbody>
         </table>
     </div>
-<?php 
-if (mysqli_num_rows($resultado) == 0) {
-    // Mostrar mensaje si no hay productos
-    echo "<div class='container'><p>No hay productos disponibles.</p></div>";
-}
+    <?php
+    if (mysqli_num_rows($resultado) == 0) {
+        // Mostrar mensaje si no hay productos
+        echo "<div class='container'><p>No hay productos disponibles.</p></div>";
+    }
 
-// Cerrar la conexión
-mysqli_close($conexion);
-include 'footer.php'; 
-?>
+    // Cerrar la conexión
+    mysqli_close($conexion);
+    include 'footer.php';
+    ?>
 </body>
+
 </html>
