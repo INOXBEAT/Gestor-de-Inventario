@@ -14,6 +14,11 @@ body {
 h1 {
     color: #036677;
     text-align: center;
+    margin-top: 40px;
+}
+
+h2 {
+    margin-top: 30px;
 }
 
 form {
@@ -79,6 +84,10 @@ td a.eliminar {
     background-color: #036677;
     color: #fff;
     padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .container {
