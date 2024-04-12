@@ -53,10 +53,11 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     border: 1px solid #ccc;
+    text-align: center;
     padding: 8px;
-    text-align: left;
 }
 
 th {
@@ -67,9 +68,18 @@ th {
 td a {
     display: inline-block;
     padding: 5px 10px;
-    margin-right: 5px;
     text-decoration: none;
     color: #000000;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+    width: 100px; /* Ancho de la primera columna */
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 150px; /* Ancho de la segunda columna */
 }
 
 td a.editar {
@@ -120,8 +130,9 @@ td a.eliminar {
 
 .acciones {
     display: flex;
-    gap: 5px;
+    justify-content: center; 
 }
+
 .acciones a {
     display: inline-block;
     padding: 5px 10px;
@@ -130,12 +141,17 @@ td a.eliminar {
     text-decoration: none;
     border-radius: 5px;
 }
+
 .acciones a:hover {
     background-color: #03474e;
 }
 
+.acciones > a:first-child {
+    margin-right: 10px;
+}
+
 .footer {
-    background-color: #036677;
+    background-color: #023c46;
     color: #fff;
     padding: 20px;
     text-align: center;
