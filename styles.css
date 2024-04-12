@@ -53,8 +53,7 @@ table {
     border-collapse: collapse;
 }
 
-th,
-td {
+th, td {
     border: 1px solid #ccc;
     text-align: center;
     padding: 8px;
@@ -63,6 +62,10 @@ td {
 th {
     background-color: #036677;
     color: #fff;
+}
+
+tr:hover td a {
+    background-color: transparent;
 }
 
 td a {
@@ -80,6 +83,14 @@ td:nth-child(1) {
 th:nth-child(2),
 td:nth-child(2) {
     width: 150px; /* Ancho de la segunda columna */
+}
+
+tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
 }
 
 td a.editar {
@@ -159,4 +170,8 @@ td a.eliminar {
 
 .footer p {
     margin: 0;
+}
+
+tr.fila-producto:hover {
+    background-color: #9ff660;
 }

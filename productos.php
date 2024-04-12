@@ -73,7 +73,7 @@ if (mysqli_num_rows($resultado) > 0) {
                 <?php
                 // Mostrar los productos
                 while ($fila = mysqli_fetch_assoc($resultado)) {
-                    echo "<tr>
+                    echo "<tr class='fila-producto'>
                         <td>{$fila['nombre']}</td>
                         <td>{$fila['descripcion']}</td>
                         <td>{$fila['cantidad']}</td>
