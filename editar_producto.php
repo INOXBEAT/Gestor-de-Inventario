@@ -20,9 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $resultado = mysqli_query($conexion, $query);
 
         if ($resultado) {
-            // Redirigir a la lista de productos con un mensaje de éxito
-            header("Location: productos.php?mensaje=Producto+actualizado+correctamente");
-            exit(); // Terminar el script después de enviar la cabecera de redirección
+            // Asignar el mensaje de éxito
+            $alert_message = 'Producto actualizado correctamente';
         } else {
             echo "Error al actualizar el producto: " . mysqli_error($conexion);
         }
@@ -68,6 +67,8 @@ mysqli_close($conexion);
             <script>
                 // Mostrar alerta en JavaScript con el mensaje de actualización
                 alert("<?php echo $alert_message; ?>");
+                // Redirigir a la lista de productos después de mostrar el mensaje
+                window.location.href = "productos.php";
             </script>
         <?php endif; ?>
         <form action="editar_producto.php" method="POST">
